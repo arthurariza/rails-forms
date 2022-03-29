@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # before_action :get_user, only: [:edit]
+  before_action :set_user, only: %i[edit update]
 
   def new
     @user = User.new
@@ -16,12 +16,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = get_user
   end
 
   def update
-    @user = get_user
-
     if @user.update(user_params)
       redirect_to @user
     else
@@ -34,7 +31,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :email, :password)
   end
 
-  def get_user
-    User.find_by_id(params[:id])
+  def set_user
+    @user = User.find_by_id(params[:id])
   end
 end
