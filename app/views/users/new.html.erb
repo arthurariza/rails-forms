@@ -21,15 +21,28 @@
 <!--</form>-->
 
 <!-- Form using form tag (Deprecated) -->
-<%= form_tag('/users') do %>
-  <%= label_tag 'user[username]', 'Username' %>
-  <%= text_field_tag 'user[username]' %>
-  <br>
-  <%= label_tag 'user[email]', 'Email' %>
-  <%= email_field_tag 'user[email]' %>
-  <br>
-  <%= label_tag 'user[password]', 'Password' %>
-  <%= password_field_tag 'user[password]' %>
-  <br>
-  <%= button_tag 'Create' %>
+<%#= form_tag('/users') do %>
+  <%#= label_tag 'user[username]', 'Username' %>
+  <%#= text_field_tag 'user[username]' %>
+<!--  <br>-->
+  <%#= label_tag 'user[email]', 'Email' %>
+  <%#= email_field_tag 'user[email]' %>
+<!--  <br>-->
+  <%#= label_tag 'user[password]', 'Password' %>
+  <%#= password_field_tag 'user[password]' %>
+<!--  <br>-->
+  <%#= button_tag 'Create' %>
+<%# end %>
+
+<%= form_with model: @user do |form| %>
+  <%= form.label 'Name' %>
+  <%= form.text_field  'username' %>
+
+  <%= form.label 'Email' %>
+  <%= form.email_field  'email' %>
+
+  <%= form.label 'Password' %>
+  <%= form.password_field 'password' %>
+
+  <%= form.submit %>
 <% end %>
