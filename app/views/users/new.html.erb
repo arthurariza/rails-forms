@@ -1,20 +1,35 @@
 <h1>Create A New User</h1>
 
-<form action="/users/" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <fieldset>
-    <label for="user[username]">Username:</label>
-    <input type="text" name="user[username]">
-  </fieldset>
+<!--Manual Form-->
+<!--<form action="/users/" method="post">-->
+<!--  <input type="hidden" name="authenticity_token" value="<%#= form_authenticity_token %>">-->
+<!--  <fieldset>-->
+<!--    <label for="user[username]">Username:</label>-->
+<!--    <input type="text" name="user[username]">-->
+<!--  </fieldset>-->
 
-  <fieldset>
-    <label for="user[email]">Email:</label>
-    <input type="email" name="user[email]">
-  </fieldset>
+<!--  <fieldset>-->
+<!--    <label for="user[email]">Email:</label>-->
+<!--    <input type="email" name="user[email]">-->
+<!--  </fieldset>-->
 
-  <fieldset>
-    <label for="user[password]">Password:</label>
-    <input type="password" name="user[password]">
-  </fieldset>
-  <button type="submit">Create</button>
-</form>
+<!--  <fieldset>-->
+<!--    <label for="user[password]">Password:</label>-->
+<!--    <input type="password" name="user[password]">-->
+<!--  </fieldset>-->
+<!--  <button type="submit">Create</button>-->
+<!--</form>-->
+
+<!-- Form using form tag (Deprecated) -->
+<%= form_tag('/users') do %>
+  <%= label_tag 'user[username]', 'Username' %>
+  <%= text_field_tag 'user[username]' %>
+  <br>
+  <%= label_tag 'user[email]', 'Email' %>
+  <%= email_field_tag 'user[email]' %>
+  <br>
+  <%= label_tag 'user[password]', 'Password' %>
+  <%= password_field_tag 'user[password]' %>
+  <br>
+  <%= button_tag 'Create' %>
+<% end %>
